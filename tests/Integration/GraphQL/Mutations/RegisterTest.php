@@ -37,6 +37,7 @@ class RegisterTest extends TestCase
             }',
         ]);
         $responseBody = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $responseBody);
         $this->assertArrayHasKey('register', $responseBody['data']);
         $this->assertArrayHasKey('status', $responseBody['data']['register']);
         $this->assertArrayHasKey('tokens', $responseBody['data']['register']);
@@ -68,6 +69,7 @@ class RegisterTest extends TestCase
             }',
         ]);
         $responseBody = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $responseBody);
         $this->assertArrayHasKey('register', $responseBody['data']);
         $this->assertArrayHasKey('status', $responseBody['data']['register']);
         $this->assertEquals('MUST_VERIFY_EMAIL', $responseBody['data']['register']['status']);

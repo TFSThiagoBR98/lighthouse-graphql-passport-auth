@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Factories;
 
 use Illuminate\Contracts\Config\Repository;
@@ -10,7 +12,7 @@ class AuthModelFactory implements \Joselfonseca\LighthouseGraphQLPassport\Contra
     /**
      * @var Repository
      */
-    private $config;
+    private Repository $config;
 
     public function __construct(
         Repository $config

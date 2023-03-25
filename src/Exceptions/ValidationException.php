@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Exceptions;
 
 use Exception;
@@ -12,17 +14,17 @@ use GraphQL\Error\ProvidesExtensions;
 class ValidationException extends Exception implements ClientAware, ProvidesExtensions
 {
     /**
-     * @var
+     * @var mixed
      */
-    public $errors;
+    public mixed $errors;
 
     /**
      * ValidationException constructor.
      *
-     * @param $validator
-     * @param  string  $message
+     * @param mixed $validator
+     * @param string $message
      */
-    public function __construct($errors, string $message = '')
+    public function __construct(mixed $errors, string $message = '')
     {
         parent::__construct($message);
 
@@ -34,7 +36,7 @@ class ValidationException extends Exception implements ClientAware, ProvidesExte
      *
      * @var string
      */
-    protected $category = 'validation';
+    protected string $category = 'validation';
 
     /**
      * Returns true when exception message is safe to be displayed to a client.

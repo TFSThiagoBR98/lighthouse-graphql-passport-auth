@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
@@ -7,20 +9,21 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AccountTerminatedException;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
 class Register extends BaseAuthResolver
 {
     /**
      * @param $rootValue
-     * @param  array  $args
-     * @param  \Nuwave\Lighthouse\Support\Contracts\GraphQLContext|null  $context
-     * @param  \GraphQL\Type\Definition\ResolveInfo  $resolveInfo
+     * @param array $args
+     * @param \Nuwave\Lighthouse\Support\Contracts\GraphQLContext|null $context
+     * @param \GraphQL\Type\Definition\ResolveInfo $resolveInfo
      * @return array
      *
      * @throws \Exception
      */
-    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
+    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo): array
     {
         $model = $this->createAuthModel($args);
 
@@ -66,6 +69,19 @@ class Register extends BaseAuthResolver
     {
         $input = collect($data)->except('password_confirmation')->toArray();
         $input['password'] = Hash::make($input['password']);
+
+        $username = $input[config('lighthouse-graphql-passport.username')];
+        $model = $this->makeAuthModelInstance();
+
+        if (method_exists($model, 'onlyTrashed')) {
+            $userDeleted = $model::query()
+                ->where(config('lighthouse-graphql-passport.username'), $username)
+                ->onlyTrashed()
+                ->first();
+            if ($userDeleted != null) {
+                throw new AccountTerminatedException("Account Terminated.", "This account was Terminated");
+            }
+        }
 
         return $this->getAuthModelFactory()->create($input);
     }

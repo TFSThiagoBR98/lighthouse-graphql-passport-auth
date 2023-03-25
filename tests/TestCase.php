@@ -48,8 +48,10 @@ class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
+        $schema = __DIR__.'/schema.graphql';
         $app['config']->set('app.key', 'base64:gG84rusPbDk6AGOjbj5foirqMZm6tdD2fKZrbP0BS+A=');
-        $app['config']->set('lighthouse.schema_path', __DIR__.'/schema.graphql');
+        $app['config']->set('lighthouse.schema_path', $schema);
+        $app['config']->set('lighthouse.schema_cache.enable', false);
         $app['config']->set('auth.guards', [
             'web' => [
                 'driver'   => 'session',

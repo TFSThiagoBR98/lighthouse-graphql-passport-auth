@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Events;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -14,16 +17,16 @@ class PasswordUpdated
     use SerializesModels;
 
     /**
-     * @var
+     * @var Authenticatable
      */
-    public $user;
+    public mixed $user;
 
     /**
      * PasswordUpdated constructor.
      *
-     * @param $user
+     * @param Authenticatable $user
      */
-    public function __construct($user)
+    public function __construct(Authenticatable $user)
     {
         $this->user = $user;
     }

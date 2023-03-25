@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Notifications;
 
 use Illuminate\Support\Carbon;
@@ -9,10 +11,10 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail
     /**
      * Get the verification URL for the given notifiable.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return string
      */
-    protected function verificationUrl($notifiable)
+    protected function verificationUrl($notifiable): string
     {
         $payload = $this->getToken($notifiable);
 
@@ -22,10 +24,10 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail
     /**
      * Get a token for the given notifiable.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return string
      */
-    protected function getToken($notifiable)
+    protected function getToken($notifiable): string
     {
         return base64_encode(json_encode([
             'id'         => $notifiable->getKey(),

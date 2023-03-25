@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Events;
 
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -12,12 +14,12 @@ class UserLoggedOut
     /**
      * @var Authenticatable
      */
-    public $user;
+    public Authenticatable $user;
 
     /**
      * UserLoggedOut constructor.
      *
-     * @param  Authenticatable  $user
+     * @param Authenticatable $user
      */
     public function __construct(Authenticatable $user)
     {

@@ -9,6 +9,4 @@ type Query {
     loggedInUserViaGuardForTest: User @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\Tests\\LoggedInUser@resolve") @guard(with: ["api"])
 }
 
-type Mutation {
-    createUser: User @create(model: "Joselfonseca\\LighthouseGraphQLPassport\\Tests\\User")
-}
+#import ../graphql/auth.graphql

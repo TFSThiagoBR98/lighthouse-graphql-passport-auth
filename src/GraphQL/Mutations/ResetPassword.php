@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Contracts\Auth\PasswordBroker;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Joselfonseca\LighthouseGraphQLPassport\Exceptions\ValidationException;
@@ -16,12 +21,14 @@ class ResetPassword
 {
     /**
      * @param $rootValue
-     * @param  array  $args
-     * @param  GraphQLContext|null  $context
-     * @param  ResolveInfo  $resolveInfo
+     * @param array $args
+     * @param \Nuwave\Lighthouse\Support\Contracts\GraphQLContext|null $context
+     * @param \GraphQL\Type\Definition\ResolveInfo $resolveInfo
      * @return array
+     *
+     * @throws \Exception
      */
-    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
+    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo): array
     {
         $args = collect($args)->except('directive')->toArray();
         $response = $this->broker()->reset($args, function ($user, $password) {
@@ -43,11 +50,11 @@ class ResetPassword
     /**
      * Reset the given user's password.
      *
-     * @param  \Illuminate\Contracts\Auth\CanResetPassword  $user
-     * @param  string  $password
+     * @param \Illuminate\Contracts\Auth\CanResetPassword|\Illuminate\Database\Eloquent\Model $user
+     * @param string $password
      * @return void
      */
-    protected function resetPassword($user, $password)
+    protected function resetPassword(CanResetPassword|Model $user, string $password): void
     {
         $user->password = Hash::make($password);
 
@@ -61,7 +68,7 @@ class ResetPassword
      *
      * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
-    public function broker()
+    public function broker(): PasswordBroker
     {
         return Password::broker();
     }

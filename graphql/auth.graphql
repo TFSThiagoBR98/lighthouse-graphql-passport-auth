@@ -1,6 +1,7 @@
 input LoginInput {
     username: String!
     password: String!
+    otp: String
 }
 
 input RefreshTokenInput {
@@ -74,16 +75,66 @@ input RegisterInput {
 input SocialLoginInput {
     provider: String! @rules(apply: ["required"])
     token: String! @rules(apply: ["required"])
+    name: NameInput
+}
+
+input NameInput {
+    firstName: String
+    lastName: String
 }
 
 input VerifyEmailInput {
     token: String!
 }
 
-input UpdatePassword {
+input UpdatePasswordInput {
     old_password: String!
     password: String! @rules(apply: ["required", "confirmed", "min:8"])
     password_confirmation: String!
+}
+
+type DeleteAccountResponse {
+    status: String!
+    message: String
+}
+
+input Validate2FAInput {
+    otp: String!
+}
+
+type Validate2FAResponse {
+    status: String!
+    message: String
+}
+
+type Prepare2FAResponse {
+    qrCode: String!
+    uri: String!
+    string: String!
+}
+
+type Activate2FAResponse {
+    status: String!
+    message: String
+    recoveryCodes: [String!]!
+}
+
+type Deactivate2FAResponse {
+    status: String!
+    message: String
+}
+
+type Get2FARecoveryCodesResponse {
+    recoveryCodes: [String!]!
+}
+
+type Generate2FARecoveryCodesResponse {
+    status: String!
+    recoveryCodes: [String!]!
+}
+
+extend type Query {
+    get2FARecoveryCodes: Get2FARecoveryCodesResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Queries\\Get2FARecoveryCodes") @guard(with: ["api"])
 }
 
 extend type Mutation {
@@ -95,5 +146,11 @@ extend type Mutation {
     register(input: RegisterInput @spread): RegisterResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Register@resolve")
     socialLogin(input: SocialLoginInput! @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\SocialLogin@resolve")
     verifyEmail(input: VerifyEmailInput! @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\VerifyEmail@resolve")
-    updatePassword(input: UpdatePassword! @spread): UpdatePasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\UpdatePassword@resolve") @guard(with: ["api"])
+    updatePassword(input: UpdatePasswordInput! @spread): UpdatePasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\UpdatePassword@resolve") @guard(with: ["api"])
+    deleteAccount: DeleteAccountResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\DeleteUser@resolve") @guard(with: ["api"])
+    validate2FA(input: Validate2FAInput! @spread): Validate2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Validate2FA") @guard(with: ["api"])
+    generate2FARecoveryCodes: Generate2FARecoveryCodesResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Generate2FARecoveryCodes") @guard(with: ["api"])
+    prepare2FA: Prepare2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Prepare2FA") @guard(with: ["api"])
+    activate2FA(input: Validate2FAInput! @spread): Activate2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Activate2FA") @guard(with: ["api"])
+    deactivate2FA(input: Validate2FAInput! @spread): Deactivate2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Deactivate2FA") @guard(with: ["api"])
 }

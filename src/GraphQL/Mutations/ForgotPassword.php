@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
+use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Password;
 use Joselfonseca\LighthouseGraphQLPassport\Events\ForgotPasswordRequested;
 use Joselfonseca\LighthouseGraphQLPassport\Exceptions\EmailNotSentException;
@@ -12,14 +15,14 @@ class ForgotPassword
 {
     /**
      * @param $rootValue
-     * @param  array  $args
-     * @param  \Nuwave\Lighthouse\Support\Contracts\GraphQLContext|null  $context
-     * @param  \GraphQL\Type\Definition\ResolveInfo  $resolveInfo
+     * @param array $args
+     * @param \Nuwave\Lighthouse\Support\Contracts\GraphQLContext|null $context
+     * @param \GraphQL\Type\Definition\ResolveInfo $resolveInfo
      * @return array
      *
      * @throws \Exception
      */
-    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
+    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo): array
     {
         $response = $this->broker()->sendResetLink(['email' => $args['email']]);
 
@@ -40,7 +43,7 @@ class ForgotPassword
      *
      * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
-    public function broker()
+    public function broker(): PasswordBroker
     {
         return Password::broker();
     }

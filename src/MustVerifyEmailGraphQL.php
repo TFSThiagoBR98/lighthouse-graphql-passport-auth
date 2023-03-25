@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport;
 
 use Joselfonseca\LighthouseGraphQLPassport\Notifications\VerifyEmail;
@@ -11,7 +13,7 @@ trait MustVerifyEmailGraphQL
      *
      * @return void
      */
-    public function sendEmailVerificationNotification()
+    public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmail());
     }

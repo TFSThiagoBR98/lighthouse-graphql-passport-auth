@@ -78,6 +78,8 @@ class SocialLoginTest extends TestCase
             ]
         );
         $decodedResponse = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $decodedResponse);
+        $this->assertArrayHasKey('socialLogin', $decodedResponse['data']);
         $this->assertArrayHasKey('access_token', $decodedResponse['data']['socialLogin']);
         $this->assertArrayHasKey('refresh_token', $decodedResponse['data']['socialLogin']);
     }
@@ -107,6 +109,8 @@ class SocialLoginTest extends TestCase
             ]
         );
         $decodedResponse = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $decodedResponse);
+        $this->assertArrayHasKey('socialLogin', $decodedResponse['data']);
         $this->assertArrayHasKey('access_token', $decodedResponse['data']['socialLogin']);
         $this->assertArrayHasKey('refresh_token', $decodedResponse['data']['socialLogin']);
         $this->assertDatabaseHas('users', [
@@ -115,7 +119,7 @@ class SocialLoginTest extends TestCase
         ]);
         $createdUser = User::first();
         $this->assertDatabaseHas('social_providers', [
-            'user_id' => $createdUser->id,
+            'user_id' => $createdUser->getKey(),
             'provider' => 'github',
             'provider_id' => 'fakeId',
         ]);
@@ -127,7 +131,7 @@ class SocialLoginTest extends TestCase
         $user = factory(User::class)->create();
         $this->mockSocialiteWithUser($user);
         $this->assertDatabaseMissing('social_providers', [
-            'user_id' => $user->id,
+            'user_id' => $user->getKey(),
         ]);
         $response = $this->graphQL(/* @lang GraphQL */ '
             mutation socialLogin($input: SocialLoginInput!) {
@@ -150,10 +154,12 @@ class SocialLoginTest extends TestCase
             ]
         );
         $decodedResponse = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $decodedResponse);
+        $this->assertArrayHasKey('socialLogin', $decodedResponse['data']);
         $this->assertArrayHasKey('access_token', $decodedResponse['data']['socialLogin']);
         $this->assertArrayHasKey('refresh_token', $decodedResponse['data']['socialLogin']);
         $this->assertDatabaseHas('social_providers', [
-            'user_id' => $user->id,
+            'user_id' => $user->getKey(),
             'provider' => 'github',
             'provider_id' => 'fakeId',
         ]);

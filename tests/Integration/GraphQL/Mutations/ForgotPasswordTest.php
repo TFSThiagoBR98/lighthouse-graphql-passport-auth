@@ -30,6 +30,7 @@ class ForgotPasswordTest extends TestCase
             }',
         ]);
         $responseBody = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $responseBody);
         $this->assertArrayHasKey('forgotPassword', $responseBody['data']);
         $this->assertArrayHasKey('status', $responseBody['data']['forgotPassword']);
         $this->assertArrayHasKey('message', $responseBody['data']['forgotPassword']);

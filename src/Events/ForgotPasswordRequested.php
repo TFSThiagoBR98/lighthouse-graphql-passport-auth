@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Events;
 
 /**
@@ -10,12 +12,12 @@ class ForgotPasswordRequested
     /**
      * @var string
      */
-    public $email;
+    public string $email;
 
     /**
      * ForgotPasswordRequested constructor.
      *
-     * @param  string  $email
+     * @param string $email
      */
     public function __construct(string $email)
     {

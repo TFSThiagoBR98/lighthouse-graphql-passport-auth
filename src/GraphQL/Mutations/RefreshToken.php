@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
@@ -14,14 +16,14 @@ class RefreshToken extends BaseAuthResolver
 {
     /**
      * @param $rootValue
-     * @param  array  $args
-     * @param  \Nuwave\Lighthouse\Support\Contracts\GraphQLContext|null  $context
-     * @param  \GraphQL\Type\Definition\ResolveInfo  $resolveInfo
+     * @param array $args
+     * @param \Nuwave\Lighthouse\Support\Contracts\GraphQLContext|null $context
+     * @param \GraphQL\Type\Definition\ResolveInfo $resolveInfo
      * @return array
      *
      * @throws \Exception
      */
-    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
+    public function resolve($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo): array
     {
         $credentials = $this->buildCredentials($args, 'refresh_token');
 
@@ -41,16 +43,17 @@ class RefreshToken extends BaseAuthResolver
 
     /**
      * @param $accessToken
-     * @return false|mixed
+     * @return null|mixed
      */
-    public function parseToken($accessToken)
+    public function parseToken($accessToken): mixed
     {
         // since we are generating the token in an internal request, there
         // is no need to verify signature to extract the sub claim
         $config = Configuration::forUnsecuredSigner();
-
+        
         $token = $config->parser()->parse((string) $accessToken);
-
+        
+        /** @var \Lcobucci\JWT\Token\DataSet */
         $claims = $token->claims();
 
         return $claims->get('sub');

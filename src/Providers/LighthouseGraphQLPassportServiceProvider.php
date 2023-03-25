@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Providers;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Joselfonseca\LighthouseGraphQLPassport\Contracts\AuthModelFactory as AuthModelFactoryContract;
 use Joselfonseca\LighthouseGraphQLPassport\Factories\AuthModelFactory;
@@ -24,14 +27,23 @@ class LighthouseGraphQLPassportServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if (config('lighthouse-graphql-passport.migrations')) {
             $this->loadMigrationsFrom(__DIR__.'/../../migrations');
         }
+
+        Validator::extend('full_name', function($attribute, $value)
+        {
+            if (! is_string($value) && ! is_numeric($value)) {
+                return false;
+            }
+    
+            return preg_match('/^[^(\|\]~`!%#¨^&*=\$\@};:+\"\”\“\/\[\\\\\{\}?><’)]*$/u', $value) > 0;
+        });
     }
 
-    public function register()
+    public function register(): void
     {
         $this->app->singleton(AuthModelFactoryContract::class, AuthModelFactory::class);
 
@@ -47,17 +59,6 @@ class LighthouseGraphQLPassportServiceProvider extends ServiceProvider
                 'lighthouse.namespaces.directives' => $lightHouseDirectives,
             ]);
         }
-
-        app('events')->listen(
-            BuildSchemaString::class,
-            function (): string {
-                if (config('lighthouse-graphql-passport.schema')) {
-                    return file_get_contents(config('lighthouse-graphql-passport.schema'));
-                }
-
-                return file_get_contents(__DIR__.'/../../graphql/auth.graphql');
-            }
-        );
     }
 
     /**
@@ -65,7 +66,7 @@ class LighthouseGraphQLPassportServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerConfig()
+    protected function registerConfig(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../../config/config.php',
@@ -90,7 +91,7 @@ class LighthouseGraphQLPassportServiceProvider extends ServiceProvider
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    protected function makeCustomRequestGrant()
+    protected function makeCustomRequestGrant(): SocialGrant
     {
         $grant = new SocialGrant(
             $this->app->make(UserRepository::class),
@@ -106,7 +107,7 @@ class LighthouseGraphQLPassportServiceProvider extends ServiceProvider
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    protected function makeLoggedInRequestGrant()
+    protected function makeLoggedInRequestGrant(): LoggedInGrant
     {
         $grant = new LoggedInGrant(
             $this->app->make(UserRepository::class),
@@ -122,7 +123,7 @@ class LighthouseGraphQLPassportServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function extendAuthorizationServer()
+    protected function extendAuthorizationServer(): void
     {
         $this->app->extend(AuthorizationServer::class, function ($server) {
             return tap($server, function ($server) {

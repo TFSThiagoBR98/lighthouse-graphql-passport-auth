@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Http\Middleware;
 
 use Closure;
@@ -12,7 +14,7 @@ class AuthenticateWithApiGuard
      *
      * @var \Illuminate\Contracts\Auth\Factory
      */
-    protected $auth;
+    protected Auth $auth;
 
     /**
      * Create a new middleware instance.
@@ -28,7 +30,7 @@ class AuthenticateWithApiGuard
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next): mixed
     {
         if ($this->auth->guard('api')->check()) {
             $this->auth->shouldUse('api');

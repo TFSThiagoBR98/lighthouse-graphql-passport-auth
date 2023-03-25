@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Joselfonseca\LighthouseGraphQLPassport\Contracts\AuthModelFactory;
 use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
@@ -13,11 +16,11 @@ use Laravel\Passport\Client;
 class BaseAuthResolver
 {
     /**
-     * @param  array  $args
-     * @param  string  $grantType
-     * @return mixed
+     * @param array $args
+     * @param string $grantType
+     * @return array
      */
-    public function buildCredentials(array $args = [], $grantType = 'password')
+    public function buildCredentials(array $args = [], string $grantType = 'password'): array
     {
         $args = collect($args);
         $credentials = $args->except('directive')->toArray();
@@ -33,12 +36,12 @@ class BaseAuthResolver
     }
 
     /**
-     * @param  array  $credentials
-     * @return mixed
+     * @param array $credentials
+     * @return array
      *
      * @throws AuthenticationException
      */
-    public function makeRequest(array $credentials)
+    public function makeRequest(array $credentials): array
     {
         $request = Request::create('oauth/token', 'POST', $credentials, [], [], [
             'HTTP_Accept' => 'application/json',
@@ -67,7 +70,7 @@ class BaseAuthResolver
     /**
      * @return \Illuminate\Database\Eloquent\Model
      */
-    protected function makeAuthModelInstance()
+    protected function makeAuthModelInstance(): Model
     {
         return $this->getAuthModelFactory()->make();
     }

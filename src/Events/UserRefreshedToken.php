@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Events;
 
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -12,7 +14,7 @@ class UserRefreshedToken
     /**
      * @var Authenticatable
      */
-    public $user;
+    public Authenticatable $user;
 
     /**
      * UserRefreshedToken constructor.

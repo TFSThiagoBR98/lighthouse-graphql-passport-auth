@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +15,7 @@ trait HasLoggedInTokens
      *
      * @throws \Exception
      */
-    public function getTokens()
+    public function getTokens(): array
     {
         $request = Request::create('oauth/token', 'POST', [
             'grant_type'    => 'logged_in_grant',
@@ -27,10 +30,10 @@ trait HasLoggedInTokens
     }
 
     /**
-     * @param $request
+     * @param mixed $request
      * @return mixed
      */
-    public function byLoggedInUser($request)
+    public function byLoggedInUser(mixed $request): ?Authenticatable
     {
         return Auth::user();
     }

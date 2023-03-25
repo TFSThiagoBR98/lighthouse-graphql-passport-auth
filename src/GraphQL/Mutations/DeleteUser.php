@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use Joselfonseca\LighthouseGraphQLPassport\Events\UserLoggedOut;
+use Joselfonseca\LighthouseGraphQLPassport\Events\UserDeleted;
 use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
+use Illuminate\Database\Eloquent\Model;
 
-class Logout extends BaseAuthResolver
+class DeleteUser
 {
     /**
      * @param $rootValue
@@ -24,15 +28,19 @@ class Logout extends BaseAuthResolver
         if (! Auth::guard('api')->check()) {
             throw new AuthenticationException('Not Authenticated', 'Not Authenticated');
         }
-
+        /** @var Authenticatable|Model */
         $user = Auth::guard('api')->user();
+        // revoke user's token
         $user->token()->revoke();
 
-        event(new UserLoggedOut($user));
+        // delete user
+        $user->delete();
+
+        event(new UserDeleted($user));
 
         return [
-            'status'  => 'TOKEN_REVOKED',
-            'message' => __('Your session has been terminated'),
+            'status'  => 'ACCOUNT_TERMINATED',
+            'message' => __('Your account has been terminated'),
         ];
     }
 }

@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Tests",
+            "type": "php",
+            "request": "launch",
+            "program": "${workspaceFolder}/vendor/bin/phpunit",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "XDEBUG_CONFIG": "idekey=VSCODE remote_enable=1 profile_enable=1"
+            },
+            "args": [
+                "-v",
+            ],
+            "port": 9003
+        }
+    ]
+}

@@ -43,7 +43,7 @@ class AuthenticateWithApiGuardTest extends TestCase
         $response->assertJson([
             'data' => [
                 'loggedInUserViaGuardForTest' => [
-                    'id'    => $user->id,
+                    'id'    => $user->getKey(),
                     'name'  => $user->name,
                     'email' => $user->email,
                 ],

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\OAuthGrants;
 
 use DateInterval;
@@ -26,7 +28,7 @@ class LoggedInGrant extends AbstractGrant
     /**
      * {@inheritdoc}
      */
-    public function respondToAccessTokenRequest(ServerRequestInterface $request, ResponseTypeInterface $responseType, DateInterval $accessTokenTTL)
+    public function respondToAccessTokenRequest(ServerRequestInterface $request, ResponseTypeInterface $responseType, DateInterval $accessTokenTTL): ResponseTypeInterface
     {
         // Validate request
         $client = $this->validateClient($request);
@@ -47,7 +49,7 @@ class LoggedInGrant extends AbstractGrant
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'logged_in_grant';
     }
@@ -58,7 +60,7 @@ class LoggedInGrant extends AbstractGrant
      *
      * @throws OAuthServerException
      */
-    protected function validateUser(ServerRequestInterface $request)
+    protected function validateUser(ServerRequestInterface $request): ?User
     {
         $laravelRequest = new Request($request->getParsedBody());
         $user = $this->getUserEntityByRequest($laravelRequest);
@@ -79,7 +81,7 @@ class LoggedInGrant extends AbstractGrant
      *
      * @throws \League\OAuth2\Server\Exception\OAuthServerException
      */
-    protected function getUserEntityByRequest(Request $request)
+    protected function getUserEntityByRequest(Request $request): ?User
     {
         if (is_null($model = config('auth.providers.users.model'))) {
             throw OAuthServerException::serverError('Unable to determine user model from configuration.');
@@ -90,6 +92,6 @@ class LoggedInGrant extends AbstractGrant
             throw OAuthServerException::serverError('Unable to find byLoggedInUser method on user model.');
         }
 
-        return ($user) ? new User($user->id) : null;
+        return ($user) ? new User($user->getKey()) : null;
     }
 }

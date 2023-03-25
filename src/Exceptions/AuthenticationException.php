@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joselfonseca\LighthouseGraphQLPassport\Exceptions;
 
 use Exception;
@@ -9,9 +11,9 @@ use GraphQL\Error\ProvidesExtensions;
 class AuthenticationException extends Exception implements ClientAware, ProvidesExtensions
 {
     /**
-     * @var @string
+     * @var string
      */
-    private $reason;
+    private string $reason;
 
     public function __construct(string $message, string $reason)
     {
@@ -41,7 +43,7 @@ class AuthenticationException extends Exception implements ClientAware, Provides
     public function getExtensions(): array
     {
         return [
-            'reason'       => $this->reason,
+            'reason' => $this->reason,
         ];
     }
 }

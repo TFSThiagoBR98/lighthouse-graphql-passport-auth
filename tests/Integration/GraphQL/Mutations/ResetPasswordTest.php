@@ -56,7 +56,7 @@ class ResetPasswordTest extends TestCase
             $responseBody['data']['updateForgottenPassword']['message'],
         );
 
-        $user = User::find($user->id);
+        $user = User::find($user->getKey());
         $this->assertTrue(Hash::check('test1234', $user->password));
     }
 

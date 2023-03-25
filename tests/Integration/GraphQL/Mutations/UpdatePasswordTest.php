@@ -55,7 +55,7 @@ class UpdatePasswordTest extends TestCase
         ]);
         $responseBody = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('errors', $responseBody);
-        $this->assertEquals('Field UpdatePassword.password_confirmation of required type String! was not provided.', $responseBody['errors'][0]['message']);
+        $this->assertEquals('Field UpdatePasswordInput.password_confirmation of required type String! was not provided.', $responseBody['errors'][0]['message']);
     }
 
     public function test_it_validates_logged_in_user()

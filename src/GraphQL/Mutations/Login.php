@@ -32,14 +32,6 @@ class Login extends BaseAuthResolver
 
         $this->validateUser($user);
 
-        if ($user instanceof TwoFactorAuthenticatable) {
-            $code = $args['otp'] ?? null;
-
-            if ($user->hasTwoFactorEnabled() && (! $user->validateTwoFactorCode($code))) {
-                throw new AuthenticationException(__('Authentication exception'), __('Invalid two factor code'));
-            }
-        }
-
         event(new UserLoggedIn($user));
 
         return array_merge(

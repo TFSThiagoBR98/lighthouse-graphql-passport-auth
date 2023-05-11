@@ -44,6 +44,7 @@ class EmailNotSentException extends Exception implements ClientAware, ProvidesEx
     {
         return [
             'reason' => $this->reason,
+            'is_error' => true,
         ];
     }
 }

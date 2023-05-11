@@ -35,7 +35,7 @@ class ForgotPassword
             ];
         }
 
-        throw new EmailNotSentException('Email not sent', __($response));
+        throw new EmailNotSentException('GENERAL_ERROR', __($response));
     }
 
     /**

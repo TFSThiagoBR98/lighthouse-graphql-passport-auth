@@ -1,6 +1,6 @@
 <?php
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Tests;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Tests;
 
 class Admin extends User
 {

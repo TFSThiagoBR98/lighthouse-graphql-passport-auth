@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Services;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Services;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Crypt;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Models;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Joselfonseca\LighthouseGraphQLPassport\Contracts\AuthModelFactory;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Contracts\AuthModelFactory;
 
 class SocialProvider extends Model
 {

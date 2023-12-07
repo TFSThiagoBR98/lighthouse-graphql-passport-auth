@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Events;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Events;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 

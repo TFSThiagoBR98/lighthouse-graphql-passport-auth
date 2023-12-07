@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Queries;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\GraphQL\Queries;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Laragear\TwoFactor\Contracts\TwoFactorAuthenticatable;
-use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;

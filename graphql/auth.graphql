@@ -134,23 +134,23 @@ type Generate2FARecoveryCodesResponse {
 }
 
 extend type Query {
-    get2FARecoveryCodes: Get2FARecoveryCodesResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Queries\\Get2FARecoveryCodes") @guard(with: ["api"])
+    get2FARecoveryCodes: Get2FARecoveryCodesResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Queries\\Get2FARecoveryCodes") @guard(with: ["api"])
 }
 
 extend type Mutation {
-    login(input: LoginInput @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Login@resolve")
-    refreshToken(input: RefreshTokenInput @spread): RefreshTokenPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\RefreshToken@resolve")
-    logout: LogoutResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Logout@resolve")
-    forgotPassword(input: ForgotPasswordInput! @spread): ForgotPasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\ForgotPassword@resolve")
-    updateForgottenPassword(input: NewPasswordWithCodeInput @spread): ForgotPasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\ResetPassword@resolve")
-    register(input: RegisterInput @spread): RegisterResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Register@resolve")
-    socialLogin(input: SocialLoginInput! @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\SocialLogin@resolve")
-    verifyEmail(input: VerifyEmailInput! @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\VerifyEmail@resolve")
-    updatePassword(input: UpdatePasswordInput! @spread): UpdatePasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\UpdatePassword@resolve") @guard(with: ["api"])
-    deleteAccount: DeleteAccountResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\DeleteUser@resolve") @guard(with: ["api"])
-    validate2FA(input: Validate2FAInput! @spread): Validate2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Validate2FA") @guard(with: ["api"])
-    generate2FARecoveryCodes: Generate2FARecoveryCodesResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Generate2FARecoveryCodes") @guard(with: ["api"])
-    prepare2FA: Prepare2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Prepare2FA") @guard(with: ["api"])
-    activate2FA(input: Validate2FAInput! @spread): Activate2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Activate2FA") @guard(with: ["api"])
-    deactivate2FA(input: Validate2FAInput! @spread): Deactivate2FAResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Deactivate2FA") @guard(with: ["api"])
+    login(input: LoginInput @spread): AuthPayload! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Login@resolve")
+    refreshToken(input: RefreshTokenInput @spread): RefreshTokenPayload! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\RefreshToken@resolve")
+    logout: LogoutResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Logout@resolve")
+    forgotPassword(input: ForgotPasswordInput! @spread): ForgotPasswordResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\ForgotPassword@resolve")
+    updateForgottenPassword(input: NewPasswordWithCodeInput @spread): ForgotPasswordResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\ResetPassword@resolve")
+    register(input: RegisterInput @spread): RegisterResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Register@resolve")
+    socialLogin(input: SocialLoginInput! @spread): AuthPayload! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\SocialLogin@resolve")
+    verifyEmail(input: VerifyEmailInput! @spread): AuthPayload! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\VerifyEmail@resolve")
+    updatePassword(input: UpdatePasswordInput! @spread): UpdatePasswordResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\UpdatePassword@resolve") @guard(with: ["api"])
+    deleteAccount: DeleteAccountResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\DeleteUser@resolve") @guard(with: ["api"])
+    validate2FA(input: Validate2FAInput! @spread): Validate2FAResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Validate2FA") @guard(with: ["api"])
+    generate2FARecoveryCodes: Generate2FARecoveryCodesResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Generate2FARecoveryCodes") @guard(with: ["api"])
+    prepare2FA: Prepare2FAResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Prepare2FA") @guard(with: ["api"])
+    activate2FA(input: Validate2FAInput! @spread): Activate2FAResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Activate2FA") @guard(with: ["api"])
+    deactivate2FA(input: Validate2FAInput! @spread): Deactivate2FAResponse! @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Deactivate2FA") @guard(with: ["api"])
 }

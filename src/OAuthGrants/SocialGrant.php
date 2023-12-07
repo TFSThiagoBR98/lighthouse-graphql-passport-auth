@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\OAuthGrants;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\OAuthGrants;
 
 use DateInterval;
 use Illuminate\Http\Request;

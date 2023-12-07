@@ -1,9 +1,9 @@
 <?php
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Tests;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Joselfonseca\LighthouseGraphQLPassport\Providers\LighthouseGraphQLPassportServiceProvider;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Providers\LighthouseGraphQLPassportServiceProvider;
 use Laravel\Passport\ClientRepository;
 use Laravel\Passport\PassportServiceProvider;
 use Laravel\Socialite\SocialiteServiceProvider;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AccountTerminatedException;
-use Joselfonseca\LighthouseGraphQLPassport\Models\SocialProvider;
-use Joselfonseca\LighthouseGraphQLPassport\Services\AppleToken;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions\AccountTerminatedException;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Models\SocialProvider;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Services\AppleToken;
 use Laravel\Socialite\Facades\Socialite;
 use League\OAuth2\Server\Exception\OAuthServerException;
 

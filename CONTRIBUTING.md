@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/joselfonseca/laravel-api).
+We accept contributions via Pull Requests on [Github](https://github.com/TFSThiagoBR98/lighthouse-graphql-passport-auth/).
 
 
 ## Pull Requests

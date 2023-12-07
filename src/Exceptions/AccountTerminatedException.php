@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Exceptions;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions;
 
 use Exception;
 use GraphQL\Error\ClientAware;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Tests\Integration\GraphQL\Mutations;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Tests\Integration\GraphQL\Mutations;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
-use Joselfonseca\LighthouseGraphQLPassport\Notifications\VerifyEmail;
-use Joselfonseca\LighthouseGraphQLPassport\Tests\TestCase;
-use Joselfonseca\LighthouseGraphQLPassport\Tests\UserVerifyEmail;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Notifications\VerifyEmail;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Tests\TestCase;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Tests\UserVerifyEmail;
 
 class RegisterTest extends TestCase
 {

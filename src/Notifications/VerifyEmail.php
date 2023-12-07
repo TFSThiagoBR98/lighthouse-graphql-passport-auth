@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Notifications;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Notifications;
 
 use Illuminate\Support\Carbon;
 

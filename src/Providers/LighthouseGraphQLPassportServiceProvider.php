@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Providers;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
-use Joselfonseca\LighthouseGraphQLPassport\Contracts\AuthModelFactory as AuthModelFactoryContract;
-use Joselfonseca\LighthouseGraphQLPassport\Factories\AuthModelFactory;
-use Joselfonseca\LighthouseGraphQLPassport\OAuthGrants\LoggedInGrant;
-use Joselfonseca\LighthouseGraphQLPassport\OAuthGrants\SocialGrant;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Contracts\AuthModelFactory as AuthModelFactoryContract;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Factories\AuthModelFactory;
+use TFSThiagoBR98\LighthouseGraphQLPassport\OAuthGrants\LoggedInGrant;
+use TFSThiagoBR98\LighthouseGraphQLPassport\OAuthGrants\SocialGrant;
 use Laravel\Passport\Bridge\RefreshTokenRepository;
 use Laravel\Passport\Bridge\UserRepository;
 use Laravel\Passport\Passport;

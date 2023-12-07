@@ -1,4 +1,4 @@
-type User @model(class: "Joselfonseca\\LighthouseGraphQLPassport\\Tests\\User"){
+type User @model(class: "TFSThiagoBR98\\LighthouseGraphQLPassport\\Tests\\User"){
     id: ID!
     name: String!
     email: String!
@@ -6,7 +6,7 @@ type User @model(class: "Joselfonseca\\LighthouseGraphQLPassport\\Tests\\User"){
 
 type Query {
     me: User @auth(guard: "api")
-    loggedInUserViaGuardForTest: User @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\Tests\\LoggedInUser@resolve") @guard(with: ["api"])
+    loggedInUserViaGuardForTest: User @field(resolver: "TFSThiagoBR98\\LighthouseGraphQLPassport\\Tests\\LoggedInUser@resolve") @guard(with: ["api"])
 }
 
 #import ../graphql/auth.graphql

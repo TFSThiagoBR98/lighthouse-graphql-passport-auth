@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Factories;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Factories;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Eloquent\Model;
 
-class AuthModelFactory implements \Joselfonseca\LighthouseGraphQLPassport\Contracts\AuthModelFactory
+class AuthModelFactory implements \TFSThiagoBR98\LighthouseGraphQLPassport\Contracts\AuthModelFactory
 {
     /**
      * @var Repository

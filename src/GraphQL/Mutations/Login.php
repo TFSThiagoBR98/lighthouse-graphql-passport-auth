@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Joselfonseca\LighthouseGraphQLPassport\Events\UserLoggedIn;
-use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Events\UserLoggedIn;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
 use Laragear\TwoFactor\Contracts\TwoFactorAuthenticatable;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 

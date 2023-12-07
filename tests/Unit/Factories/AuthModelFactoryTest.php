@@ -1,12 +1,12 @@
 <?php
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Tests\Unit\Factories;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Tests\Unit\Factories;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
-use Joselfonseca\LighthouseGraphQLPassport\Contracts\AuthModelFactory;
-use Joselfonseca\LighthouseGraphQLPassport\Tests\TestCase;
-use Joselfonseca\LighthouseGraphQLPassport\Tests\User;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Contracts\AuthModelFactory;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Tests\TestCase;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Tests\User;
 
 class AuthModelFactoryTest extends TestCase
 {

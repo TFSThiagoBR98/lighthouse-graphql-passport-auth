@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport;
 
-use Joselfonseca\LighthouseGraphQLPassport\Notifications\VerifyEmail;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Notifications\VerifyEmail;
 
 trait MustVerifyEmailGraphQL
 {

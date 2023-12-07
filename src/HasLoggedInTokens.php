@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;

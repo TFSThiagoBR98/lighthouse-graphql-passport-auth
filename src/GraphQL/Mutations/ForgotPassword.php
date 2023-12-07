@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Password;
-use Joselfonseca\LighthouseGraphQLPassport\Events\ForgotPasswordRequested;
-use Joselfonseca\LighthouseGraphQLPassport\Exceptions\EmailNotSentException;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Events\ForgotPasswordRequested;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions\EmailNotSentException;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
 class ForgotPassword

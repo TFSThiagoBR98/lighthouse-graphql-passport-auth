@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Http\Middleware;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;

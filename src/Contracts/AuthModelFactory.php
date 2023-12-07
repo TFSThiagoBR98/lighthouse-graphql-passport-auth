@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Contracts;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 

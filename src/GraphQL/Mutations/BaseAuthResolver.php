@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Joselfonseca\LighthouseGraphQLPassport\Contracts\AuthModelFactory;
-use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Contracts\AuthModelFactory;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
 use Laravel\Passport\Client;
 
 /**

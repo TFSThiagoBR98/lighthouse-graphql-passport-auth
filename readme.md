@@ -1,7 +1,7 @@
-Lighthouse GraphQL Passport Auth (Laravel ^7.0 / Lighthouse ^4.0)
+Lighthouse GraphQL Passport Auth (Laravel ^10.0 / Lighthouse ^6.3)
 ===============================================
 
-[![Total Downloads](https://poser.pugx.org/joselfonseca/lighthouse-graphql-passport-auth/downloads.svg)](https://packagist.org/packages/joselfonseca/lighthouse-graphql-passport-auth)
+[![Total Downloads](https://poser.pugx.org/TFSThiagoBR98/lighthouse-graphql-passport-auth/downloads.svg)](https://packagist.org/packages/TFSThiagoBR98/lighthouse-graphql-passport-auth)
 [![StyleCI](https://styleci.io/repos/166881918/shield?branch=master)](https://styleci.io/repos/166881918)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
@@ -17,7 +17,7 @@ Find the detailed documentation in [the documentation site](https://lighthouse-p
 
 ## Change log
 
-Please see the releases page [https://github.com/joselfonseca/lighthouse-graphql-passport-auth/releases](https://github.com/joselfonseca/lighthouse-graphql-passport-auth/releases)
+Please see the releases page [https://github.com/TFSThiagoBR98/lighthouse-graphql-passport-auth/releases](https://github.com/TFSThiagoBR98/lighthouse-graphql-passport-auth/releases)
 
 ## Tests
 
@@ -42,6 +42,7 @@ If you discover any security related issues, please email jose at ditecnologia d
 
 ## Credits
 
+- [Thiago França](https://github.com/TFSThiagoBR98)
 - [Jose Luis Fonseca](https://github.com/joselfonseca)
 - [All Contributors](../../contributors)
 

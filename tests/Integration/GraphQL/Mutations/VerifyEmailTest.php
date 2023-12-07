@@ -1,12 +1,12 @@
 <?php
 
-namespace Joselfonseca\LighthouseGraphQLPassport\Tests\Integration\GraphQL\Mutations;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\Tests\Integration\GraphQL\Mutations;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
-use Joselfonseca\LighthouseGraphQLPassport\Tests\TestCase;
-use Joselfonseca\LighthouseGraphQLPassport\Tests\UserVerifyEmail;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Tests\TestCase;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Tests\UserVerifyEmail;
 
 class VerifyEmailTest extends TestCase
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Joselfonseca\LighthouseGraphQLPassport\GraphQL\Mutations;
+namespace TFSThiagoBR98\LighthouseGraphQLPassport\GraphQL\Mutations;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Laragear\TwoFactor\Contracts\TwoFactorAuthenticatable;
-use Joselfonseca\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions\AuthenticationException;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Joselfonseca\LighthouseGraphQLPassport\Exceptions\ValidationException;
+use TFSThiagoBR98\LighthouseGraphQLPassport\Exceptions\ValidationException;
 
 class Generate2FARecoveryCodes
 {

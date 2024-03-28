@@ -22,20 +22,18 @@
     ],
     "require": {
         "php": "^8.2",
-        "nuwave/lighthouse": "^6.3",
-        "laravel/passport": "^11.0",
-        "laravel/socialite": "^5.0",
-        "socialiteproviders/apple": "^5.4",
-        "laragear/two-factor": "^1.2",
-        "laragear/webauthn": "^1.2"
+        "nuwave/lighthouse": "^6.36",
+        "laravel/passport": "^12.0",
+        "laravel/socialite": "^5.12",
+        "socialiteproviders/apple": "^5.6",
+        "laragear/two-factor": "^2.0",
+        "laragear/webauthn": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0",
-        "orchestra/testbench": "^7.0 || ^8.0",
-        "eduarguz/shift-php-cs": "dev-master",
-        "laravel/legacy-factories": "^1.0",
-        "laravel/framework": "^10.0",
-        "nesbot/carbon": "^2.62.1"
+        "phpunit/phpunit": "^11.0",
+        "orchestra/testbench": "^9.0",
+        "laravel/framework": "^11.0",
+        "nesbot/carbon": "^3.0"
     },
     "autoload": {
         "psr-4": {
